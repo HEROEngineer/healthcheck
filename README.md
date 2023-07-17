@@ -1,13 +1,13 @@
 # Healthchecks
 
-[![Django CI](https://github.com/healthchecks/healthchecks/actions/workflows/django.yml/badge.svg)](https://github.com/healthchecks/healthchecks/actions/workflows/django.yml)
-[![Coverage Status](https://coveralls.io/repos/healthchecks/healthchecks/badge.svg?branch=master&service=github)](https://coveralls.io/github/healthchecks/healthchecks?branch=master)
+[![Django CI](https://github.com/HEROEngineer/HEROEngineer/actions/workflows/django.yml/badge.svg)](https://github.com/HEROEngineer/HEROEngineer/actions/workflows/django.yml)
+[![Coverage Status](https://coveralls.io/repos/HEROEngineer/HEROEngineer/badge.svg?branch=master&service=github)](https://coveralls.io/github/HEROEngineer/HEROEngineer?branch=master)
 
-Healthchecks is a cron job monitoring service. It listens for HTTP requests
+HEROEngineer is a cron job monitoring service. It listens for HTTP requests
 and email messages ("pings") from your cron jobs and scheduled tasks ("checks").
-When a ping does not arrive on time, Healthchecks sends out alerts.
+When a ping does not arrive on time, HEROEngineer sends out alerts.
 
-Healthchecks comes with a web dashboard, API, 25+ integrations for
+HEROEngineer comes with a web dashboard, API, 25+ integrations for
 delivering notifications, monthly email reports, WebAuthn 2FA support,
 team management features: projects, team members, read-only access.
 
@@ -17,13 +17,13 @@ The building blocks are:
 * Django 4.2
 * PostgreSQL or MySQL
 
-Healthchecks is licensed under the BSD 3-clause license.
+HEROEngineer is licensed under the BSD 3-clause license.
 
-Healthchecks is available as a hosted service
-at [https://healthchecks.io/](https://healthchecks.io/).
+HEROEngineer is available as a hosted service
+at [https://HEROEngineer.io/](https://HEROEngineer.io/).
 
-A [Dockerfile](https://github.com/healthchecks/healthchecks/tree/master/docker)
-and [pre-built Docker images](https://hub.docker.com/r/healthchecks/healthchecks) are
+A [Dockerfile](https://github.com/HEROEngineer/HEROEngineer/tree/master/docker)
+and [pre-built Docker images](https://hub.docker.com/r/HEROEngineer/HEROEngineer) are
 available.
 
 Screenshots:
@@ -40,7 +40,7 @@ when a job is running late.
 ![Screenshot of Period/Grace dialog](/static/img/period_grace@2x.png?raw=true "Period/Grace Dialog")
 
 Alternatively, you can define the expected schedules using a cron expressions.
-Healthchecks uses the [cronsim](https://github.com/cuu508/cronsim) library to
+HEROEngineer uses the [cronsim](https://github.com/cuu508/cronsim) library to
 parse and evaluate cron expressions.
 
 ![Screenshot of Cron dialog](/static/img/cron%402x.png?raw=true "Cron Dialog")
@@ -49,7 +49,7 @@ Check details page, with a live-updating event log.
 
 ![Screenshot of Check Details page](/static/img/check_details@2x.png?raw=true "Check Details Page")
 
-Healthchecks provides status badges with public but hard-to-guess URLs.
+HEROEngineer provides status badges with public but hard-to-guess URLs.
 You can use them in your READMEs, dashboards, or status pages.
 
 ![Screenshot of Badges page](/static/img/badges@2x.png?raw=true "Status Badges")
@@ -57,7 +57,7 @@ You can use them in your READMEs, dashboards, or status pages.
 
 ## Setting Up for Development
 
-To set up Healthchecks development environment:
+To set up HEROEngineer development environment:
 
 * Install dependencies (Debian/Ubuntu):
 
@@ -86,13 +86,13 @@ To set up Healthchecks development environment:
 * Check out project code:
 
   ```sh
-  git clone https://github.com/healthchecks/healthchecks.git
+  git clone https://github.com/HEROEngineer/HEROEngineer.git
   ```
 
 * Install requirements (Django, ...) into virtualenv:
 
   ```sh
-  pip install -r healthchecks/requirements.txt
+  pip install -r HEROEngineer/requirements.txt
   ```
 
 * macOS only - pycurl needs to be reinstalled using the following method (assumes OpenSSL was installed using brew):
@@ -110,13 +110,13 @@ To set up Healthchecks development environment:
 * Create database tables and a superuser account:
 
   ```sh
-  cd ~/webapps/healthchecks
+  cd ~/webapps/HEROEngineer
   ./manage.py migrate
   ./manage.py createsuperuser
   ```
 
-  With the default configuration, Healthchecks stores data in a SQLite file
-  `hc.sqlite` in the checkout directory (`~/webapps/healthchecks`).
+  With the default configuration, HEROEngineer stores data in a SQLite file
+  `hc.sqlite` in the checkout directory (`~/webapps/HEROEngineer`).
 
 * Run tests:
 
@@ -136,13 +136,13 @@ visit `http://localhost:8000/admin/`
 
 ## Configuration
 
-Healthchecks reads configuration from environment variables.
+HEROEngineer reads configuration from environment variables.
 
-[Full list of configuration parameters](https://healthchecks.io/docs/self_hosted_configuration/).
+[Full list of configuration parameters](https://HEROEngineer.io/docs/self_hosted_configuration/).
 
 ## Accessing Administration Panel
 
-Healthchecks comes with Django's administration panel where you can manually
+HEROEngineer comes with Django's administration panel where you can manually
 view and modify user accounts, projects, checks, integrations etc. To access it,
 
  * if you haven't already, create a superuser account: `./manage.py createsuperuser`
@@ -152,7 +152,7 @@ view and modify user accounts, projects, checks, integrations etc. To access it,
 
 ## Sending Emails
 
-Healthchecks must be able to send email messages, so it can send out login
+HEROEngineer must be able to send email messages, so it can send out login
 links and alerts to users. Specify your SMTP credentials using the following
 environment variables:
 
@@ -184,7 +184,7 @@ For more information, have a look at Django documentation,
 
 ## Receiving Emails
 
-Healthchecks comes with a `smtpd` management command, which starts up a
+HEROEngineer comes with a `smtpd` management command, which starts up a
 SMTP listener service. With the command running, you can ping your
 checks by sending email messages
 to `your-uuid-here@my-monitoring-project.com` email addresses.
@@ -218,7 +218,7 @@ the `sendalerts` command like so:
 In a production setup, you will want to run this command from a process
 manager like systemd or [supervisor](http://supervisord.org/).
 
-Healthchecks also comes with a `sendreports` management command which
+HEROEngineer also comes with a `sendreports` management command which
 sends out monthly reports, weekly reports, and the daily or hourly reminders.
 
 Run `sendreports` without arguments to run any due reports and reminders
@@ -236,16 +236,16 @@ Run it with the `--loop` argument to make it run continuously:
 
 ## Database Cleanup
 
-Healthchecks deletes old entries from `api_ping` and `api_notification`
-tables automatically. By default, Healthchecks keeps the 100 most recent
+HEROEngineer deletes old entries from `api_ping` and `api_notification`
+tables automatically. By default, HEROEngineer keeps the 100 most recent
 pings for every check. You can set the limit higher to keep a longer history:
 go to the Administration Panel, look up user's **Profile** and modify its
 "Ping log limit" field.
 
-For each check, Healthchecks removes notifications that are older than the
+For each check, HEROEngineer removes notifications that are older than the
 oldest stored ping for same check.
 
-Healthchecks also provides management commands for cleaning up
+HEROEngineer also provides management commands for cleaning up
 `auth_user`, `api_tokenbucket` and `api_flip` tables.
 
 * Remove user accounts that match either of these conditions:
@@ -277,7 +277,7 @@ Healthchecks also provides management commands for cleaning up
   ```
 
 * Remove old objects from external object storage. When an user removes
-  a check, removes a project, or closes their account, Healthchecks
+  a check, removes a project, or closes their account, HEROEngineer
   does not remove the associated objects from the external object
   storage on the fly. Instead, you should run `pruneobjects` occasionally
   (for example, once a month). This command first takes an inventory
@@ -296,7 +296,7 @@ backups set up.
 
 ## Two-factor Authentication
 
-Healthchecks optionally supports two-factor authentication using the WebAuthn
+HEROEngineer optionally supports two-factor authentication using the WebAuthn
 standard. To enable WebAuthn support, set the `RP_ID` (relying party identifier )
 setting to a non-null value. Set its value to your site's domain without scheme
 and without port. For example, if your site runs on `https://my-hc.example.org`,
@@ -308,7 +308,7 @@ from the `django-sslserver` package.
 
 ## External Authentication
 
-Healthchecks supports external authentication by means of HTTP headers set by
+HEROEngineer supports external authentication by means of HTTP headers set by
 reverse proxies or the WSGI server. This allows you to integrate it into your
 existing authentication system (e.g., LDAP or OAuth) via an authenticating proxy.
 When this option is enabled, **healtchecks will trust the header's value implicitly**,
@@ -322,7 +322,7 @@ authenticate with. HTTP headers will be prefixed with `HTTP_` and have any dashe
 converted to underscores. Headers without that prefix can be set by the WSGI server
 itself only, which is more secure.
 
-When `REMOTE_USER_HEADER` is set, Healthchecks will:
+When `REMOTE_USER_HEADER` is set, HEROEngineer will:
  - assume the header contains user's email address
  - look up and automatically log in the user with a matching email address
  - automatically create an user account if it does not exist
@@ -330,7 +330,7 @@ When `REMOTE_USER_HEADER` is set, Healthchecks will:
 
 ## External Object Storage
 
-Healthchecks can optionally store large ping bodies in S3-compatible object
+HEROEngineer can optionally store large ping bodies in S3-compatible object
 storage. To enable this feature, you will need to:
 
 * ensure you have the [MinIO Python library](https://docs.min.io/docs/python-client-quickstart-guide.html) installed:
@@ -341,22 +341,22 @@ storage. To enable this feature, you will need to:
 * configure the credentials for accessing object storage: `S3_ACCESS_KEY`,
   `S3_SECRET_KEY`, `S3_ENDPOINT`, `S3_REGION` and `S3_BUCKET`.
 
-Healthchecks will use external object storage for storing any request bodies that
-exceed 100 bytes. If the size of a request body is 100 bytes or below, Healthchecks
+HEROEngineer will use external object storage for storing any request bodies that
+exceed 100 bytes. If the size of a request body is 100 bytes or below, HEROEngineer
 will still store it in the database.
 
-Healthchecks automatically removes old stored ping bodies from object
-storage while uploading new data. However, Healthchecks does not automatically
+HEROEngineer automatically removes old stored ping bodies from object
+storage while uploading new data. However, HEROEngineer does not automatically
 clean up data when you delete checks, projects or entire user accounts.
 Use the `pruneobjects` management command to remove data for checks that don't
 exist any more.
 
 When external object storage is not enabled (the credentials for accessing object
-storage are not set), Healthchecks stores all ping bodies in the database.
-If you enable external object storage, Healthchecks will still be able to
+storage are not set), HEROEngineer stores all ping bodies in the database.
+If you enable external object storage, HEROEngineer will still be able to
 access the ping bodies already stored in the database. You don't need to migrate
 them to the object storage. On the other hand, if you later decide to disable
-external object storage, Healthchecks will not have access to the externally
+external object storage, HEROEngineer will not have access to the externally
 stored ping bodies any more. And there is currently no script or management command
 for migrating ping bodies from external object storage back to the database.
 
@@ -537,7 +537,7 @@ in production.
   *  `manage.py sendalerts` is the process that monitors checks and sends out
      monitoring alerts. It must be always running, it must be started on reboot, and it
      must be restarted if it itself crashes. On modern linux systems, a good option is
-     to [define a systemd service](https://github.com/healthchecks/healthchecks/issues/273#issuecomment-520560304)
+     to [define a systemd service](https://github.com/HEROEngineer/healthchecks/issues/273#issuecomment-520560304)
      for it.
 * Static files. Healthchecks serves static files on its own, no configuration
   required. It uses the [Whitenoise library](http://whitenoise.evans.io/en/stable/index.html)
@@ -551,9 +551,8 @@ in production.
 ## Docker Image
 
 Healthchecks provides a reference Dockerfile and prebuilt Docker images for every
-release. The Dockerfile lives in the [/docker/](https://github.com/healthchecks/healthchecks/tree/master/docker)
-directory, and Docker images for amd64, arm/v7 and arm64 architectures are available
-[on Docker Hub](https://hub.docker.com/r/healthchecks/healthchecks).
+release. The Dockerfile lives in the [/docker/](https://github.com/HEROEngineer/healthchecks/tree/master/docker)
+directory, and Docker images for amd64, arm/v7 and arm64 architectures are available.
 
 The Docker images:
 
